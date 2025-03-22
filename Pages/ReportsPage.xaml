@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:skia="clr-namespace:SkiaSharp.Views.Maui.Controls;assembly=SkiaSharp.Views.Maui.Controls"
+             x:Class="PersonalFinanceTracker.Pages.ReportsPage" Title="ReportsPage" NavigationPage.HasNavigationBar="False">
+
+    <Grid RowDefinitions="Auto,AUto,Auto" Padding="25" RowSpacing="20">
+
+        <!-- Title -->
+        <Label Grid.Row="0" Text="Income vs Expenses" 
+               FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" TextColor="#800000" />
+        <!--TextColor="#2C3E50"-->
+
+        <!-- Graph Card -->
+        <Frame Grid.Row="1" BackgroundColor="White" CornerRadius="15" HasShadow="True" Padding="10"
+               BorderColor="#DDD">
+            <Grid RowDefinitions="Auto,Auto">
+                <Grid RowDefinitions="Auto,Auto" HorizontalOptions="End" RowSpacing="15">
+                    <StackLayout Grid.Row="0" Orientation="Horizontal">
+                        <BoxView WidthRequest="20" HeightRequest="20" Color="#27AE60" />
+                        <Label Text="Income" FontSize="16" TextColor="#2C3E50" Padding="5,0,0,0" />
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="1" Orientation="Horizontal">
+                        <BoxView WidthRequest="20" HeightRequest="20" Color="red" />
+                        <Label Text="Expenses" FontSize="16" TextColor="#2C3E50" Padding="5,0,0,0" />
+                    </StackLayout>
+                </Grid>
+                <skia:SKCanvasView  Grid.Row="1" x:Name="skiaCanvas" PaintSurface="OnCanvasViewPaintSurface" 
+                                   HeightRequest="300" />
+
+                <!-- No Data Placeholder -->
+                <StackLayout x:Name="NoDataLayout" IsVisible="False"
+                             VerticalOptions="Center" HorizontalOptions="Center"
+                             Padding="20" BackgroundColor="White">
+                    <Image Source="nodata_icon.png" WidthRequest="120" HeightRequest="120"/>
+                    <Label Text="No Data Available" FontSize="18" TextColor="#7F8C8D"
+                           HorizontalOptions="Center" FontAttributes="Bold"/>
+                    <Label Text="Start adding transactions to see reports." 
+                           FontSize="14" TextColor="#95A5A6" HorizontalOptions="Center"/>
+                </StackLayout>
+            </Grid>
+        </Frame>
+
+        <!-- Legend -->
+        <!--<Frame BackgroundColor="White" CornerRadius="15" HasShadow="True" Padding="15"
+               BorderColor="#DDD">
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="15">
+                <StackLayout Orientation="Horizontal">
+                    <BoxView WidthRequest="20" HeightRequest="20" Color="#27AE60"/>
+                    <Label Text="Income" FontSize="16" TextColor="#2C3E50" Padding="5,0,0,0"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <BoxView WidthRequest="20" HeightRequest="20" Color="red"/>
+                    <Label Text="Expenses" FontSize="16" TextColor="#2C3E50" Padding="5,0,0,0"/>
+                </StackLayout>
+            </HorizontalStackLayout>
+        </Frame>-->
+
+        <Button Grid.Row="3" Text="⬅️ Back" Clicked="OnBackButtonClicked" BackgroundColor="#FF6347" TextColor="White" FontSize="18" CornerRadius="12" HeightRequest="55" FontAttributes="Bold" />
+    </Grid>
+</ContentPage>

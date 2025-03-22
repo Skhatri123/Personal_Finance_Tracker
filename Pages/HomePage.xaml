@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="PersonalFinanceTracker.Pages.HomePage" Title="Home" NavigationPage.HasNavigationBar="False">
+
+    <Grid Padding="20" RowDefinitions="Auto,Auto,Auto,Auto" RowSpacing="20">
+
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,*" ColumnSpacing="20">
+            <Image Grid.Column="0" Source="home1.png" WidthRequest="50" HeightRequest="50" />
+            <Label Grid.Column="1"  Text="Home" FontSize="30" FontAttributes="Bold" VerticalTextAlignment="End" HorizontalOptions="Start" TextColor="#800000" HeightRequest="50"/>
+        </Grid>
+
+        <!-- Total Balance Section -->
+        <Frame Grid.Row="1" BackgroundColor="White" Padding="20" CornerRadius="15" HasShadow="True">
+            <Grid RowDefinitions="Auto, Auto" HorizontalOptions="Center">
+                <Label Grid.Row="0" Text="Total Balance" FontSize="20" FontAttributes="Bold" TextColor="#333" HorizontalOptions="Center" />
+                <Label Grid.Row="1" x:Name="BalanceLabel" FontSize="30" TextColor="Green" FontAttributes="Bold" HorizontalOptions="Center" />
+            </Grid>
+        </Frame>
+
+        <!-- Income & Expense Section -->
+        <Grid ColumnDefinitions="Auto, Auto" Grid.Row="2" ColumnSpacing="50">
+            <!-- Income Card -->
+            <Frame Grid.Column="0" BackgroundColor="White" Padding="15" CornerRadius="15" HasShadow="True" WidthRequest="150">
+                <Grid RowDefinitions="Auto, Auto, Auto" HorizontalOptions="Center">
+                    <Image Grid.Row="0" Source="income_icon.png" HeightRequest="50" WidthRequest="50" />
+                    <Label Grid.Row="1" Text="Income" FontSize="18" FontAttributes="Bold" TextColor="Blue" HorizontalOptions="Center" />
+                    <Label Grid.Row="2" x:Name="IncomeLabel" FontSize="22" TextColor="Blue" HorizontalOptions="Center" />
+                </Grid>
+            </Frame>
+
+            <!-- Expense Card -->
+            <Frame Grid.Column="1" BackgroundColor="White" Padding="15" CornerRadius="15" HasShadow="True" WidthRequest="150">
+                <Grid RowDefinitions="Auto, Auto, Auto" HorizontalOptions="Center">
+                    <Image Grid.Row="0" Source="expense_icon.png" HeightRequest="50" WidthRequest="50" />
+                    <Label Grid.Row="1" Text="Expenses" FontSize="18" FontAttributes="Bold" TextColor="Red" HorizontalOptions="Center" />
+                    <Label Grid.Row="2" x:Name="ExpenseLabel" FontSize="22" TextColor="Red" HorizontalOptions="Center" />
+                </Grid>
+            </Frame>
+        </Grid>
+
+        <!-- Navigation Buttons -->
+        <Grid Grid.Row="3" RowDefinitions="Auto, Auto, Auto" RowSpacing="20" Margin="0,30,0,0">
+            <Button Grid.Row="0" Text="📋 View Transactions" VerticalOptions="End" Clicked="OnViewTransactionsClicked" BackgroundColor="#007AFF" TextColor="White" CornerRadius="10" />
+            <Button Grid.Row="1" Text="➕ Add Transaction" VerticalOptions="End" Clicked="OnAddTransactionClicked" BackgroundColor="#28a745" TextColor="White" CornerRadius="10" />
+            <Button Grid.Row="2" Text="📊 View Reports" VerticalOptions="End" Clicked="OnViewReportsClicked" BackgroundColor="#ff6600" TextColor="White" CornerRadius="10" />
+        </Grid>
+    </Grid>
+</ContentPage>

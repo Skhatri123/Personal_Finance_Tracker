@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="PersonalFinanceTracker.Pages.AddTransactionPage" Title="AddTransactionPage" NavigationPage.HasNavigationBar="False">
+
+    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,*" Padding="25" RowSpacing="20">
+
+        <Label Grid.Row="0" Text="New Transaction" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center" TextColor="#800000" />
+
+        <!-- Description Entry -->
+        <Frame Grid.Row="1" CornerRadius="12" BorderColor="#DDD" BackgroundColor="White" Padding="12" HasShadow="True">
+            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                <Image Grid.Column="0" Source="description_icon.png" WidthRequest="30" HeightRequest="30" />
+                <Entry Grid.Column="1" x:Name="EntryDescription" Placeholder="Enter Description" FontSize="18" TextColor="Black" />
+            </Grid>
+        </Frame>
+
+        <!-- Amount Entry -->
+        <Frame Grid.Row="2" CornerRadius="12" BorderColor="#DDD" BackgroundColor="White" Padding="12" HasShadow="True">
+            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                <Image Grid.Column="0" Source="amount_icon.png" WidthRequest="30" HeightRequest="30" />
+                <Entry Grid.Column="1" x:Name="EntryAmount" Placeholder="Enter Amount" Keyboard="Numeric" FontSize="18" TextColor="Black" />
+            </Grid>
+        </Frame>
+
+        <!-- Transaction Date -->
+        <Frame Grid.Row="3" CornerRadius="12" BorderColor="#DDD" BackgroundColor="White" Padding="12" HasShadow="True">
+            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                <Image Grid.Column="0" Source="calendar_icon.png" WidthRequest="30" HeightRequest="30" />
+                <DatePicker Grid.Column="1" x:Name="TransactionDatePicker" TextColor="Black" />
+            </Grid>
+        </Frame>
+
+        <!-- Transaction Type Picker -->
+        <Frame Grid.Row="4" CornerRadius="12" BorderColor="#DDD" BackgroundColor="White" Padding="12" HasShadow="True">
+            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                <Image Grid.Column="0" Source="transaction_icon.png" WidthRequest="30" HeightRequest="30" />
+                <Picker Grid.Column="1" x:Name="TransactionTypePicker" Title="Select Type" FontSize="18" TextColor="Black">
+                    <Picker.Items>
+                        <x:String>Income</x:String>
+                        <x:String>Expense</x:String>
+                    </Picker.Items>
+                </Picker>
+            </Grid>
+        </Frame>
+
+        <!-- Save Transaction Button -->
+        <Grid Grid.Row="5" RowDefinitions="Auto,Auto" Margin="0,50,0,0" RowSpacing="20">
+            <Button Grid.Row="0" Text="💾 Save Transaction" Clicked="OnSaveTransaction" BackgroundColor="#28A745" TextColor="White" FontSize="18" CornerRadius="12" HeightRequest="55" FontAttributes="Bold" />
+            <Button Grid.Row="1" Text="⬅️ Back" Clicked="OnBackButtonClicked" BackgroundColor="#FF6347" TextColor="White" FontSize="18" CornerRadius="12" HeightRequest="55" FontAttributes="Bold" />
+        </Grid>
+
+    </Grid>
+</ContentPage>

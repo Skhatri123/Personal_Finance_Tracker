@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="PersonalFinanceTracker.Pages.LoginPage" 
+             Title="LoginPage" BackgroundColor="#FFFACD">
+
+    <!--<ContentPage.Background>
+		<LinearGradientBrush>
+			<GradientStop Color="#4A90E2" Offset="0.0"/>
+			<GradientStop Color="#1A237E" Offset="1.0"/>
+		</LinearGradientBrush>
+	</ContentPage.Background>-->
+
+    <Grid RowDefinitions="Auto, Auto" >
+        <!-- Logo -->
+        <Frame WidthRequest="150" HeightRequest="150" Grid.Row="0" Margin="0,100,0,0" BorderColor="#388E3C" CornerRadius="20" BackgroundColor="Transparent">
+            <Image x:Name="logoImage" Source="logo4.png" WidthRequest="200" HeightRequest="200" HorizontalOptions="Center" Opacity="0" />
+        </Frame>
+
+        <!-- Login Form -->
+        <Frame Grid.Row="1" CornerRadius="20" Margin="20" Padding="25" BackgroundColor="White">
+            <VerticalStackLayout Spacing="15">
+
+                <Entry x:Name="UsernameEntry" Placeholder="UserName" FontSize="16" Keyboard="Email" />
+                <Entry x:Name="PasswordEntry" Placeholder="Password" FontSize="16" IsPassword="True" />
+
+                <Button Text="Login" Clicked="OnLoginClicked" TextColor="White" BackgroundColor="#388E3C" CornerRadius="25" FontSize="18" HeightRequest="50" />
+
+                <Label Text="Don't have an account? Register" TextColor="Blue" FontSize="14" HorizontalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnRegisterTapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+
+            </VerticalStackLayout>
+        </Frame>
+    </Grid>
+</ContentPage>

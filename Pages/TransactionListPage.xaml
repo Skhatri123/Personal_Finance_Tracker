@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="PersonalFinanceTracker.Pages.TransactionListPage" xmlns:local="clr-namespace:PersonalFinanceTracker.Converter" Title="TransactionListPage" NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:AmountColorConverter x:Key="AmountColorConverter" />
+            <local:TransactionIconConverter x:Key="TransactionIconConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto, *, Auto" Padding="20">
+        <!-- Gradient Background -->
+
+        <Label Grid.Row="0" Text="Transaction History" Margin="0,0,0,10" FontSize="26" FontAttributes="Bold" HorizontalOptions="Center" TextColor="#800000" />
+
+        <!-- Empty State Message -->
+        <StackLayout Grid.Row="1" x:Name="EmptyMessage" IsVisible="False" HorizontalOptions="Center" Padding="20">
+            <Image Source="empty_transactions.png" HeightRequest="150" WidthRequest="150" Opacity="0.7" />
+            <Label Text="No transactions found!" FontSize="18" FontAttributes="Bold" TextColor="Gray" HorizontalOptions="Center" />
+            <Label Text="Add some transactions to see your history." FontSize="14" TextColor="Gray" HorizontalOptions="Center" />
+        </StackLayout>
+
+        <!-- List of Transactions with Swipe to Delete -->
+        <CollectionView x:Name="TransactionListView" Grid.Row="1" IsVisible="False">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems Mode="Reveal">
+                                <SwipeItem Text="Delete" BackgroundColor="Red" Invoked="OnDeleteTransaction" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+
+                        <Frame Padding="15" Margin="5" CornerRadius="15" BackgroundColor="White" HasShadow="True">
+                            <HorizontalStackLayout Spacing="15">
+                                <!-- Transaction Icon -->
+                                <Image Source="{Binding Amount, Converter={StaticResource TransactionIconConverter}}" HeightRequest="45" WidthRequest="45" />
+
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding Description}" FontSize="18" FontAttributes="Bold" TextColor="#222" />
+                                    <Label Text="{Binding Date, StringFormat='{0:dd MMM yyyy}'}" FontSize="14" TextColor="Gray" />
+                                </VerticalStackLayout>
+
+                                <Label Text="{Binding Amount, StringFormat='₹ {0:N2}'}" FontSize="18" FontAttributes="Bold" TextColor="{Binding Amount, Converter={StaticResource AmountColorConverter}}" />
+                            </HorizontalStackLayout>
+                        </Frame>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button Grid.Row="2" Text="⬅️ Back"  Clicked="OnBackButtonClicked" BackgroundColor="#FF6347" VerticalOptions="EndAndExpand" TextColor="White" FontSize="18" CornerRadius="12" HeightRequest="55" FontAttributes="Bold" />
+
+    </Grid>
+</ContentPage>
